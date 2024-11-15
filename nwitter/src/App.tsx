@@ -2,6 +2,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './components/layout';
 import Profile from './routes/profile';
 import Home from './routes/home';
+import Login from './routes/login';
+import CreateAccount from './routes/create-account';
+import reset from 'styled-reset';
+import { createGlobalStyle } from 'styled-components';
 
 const router = createBrowserRouter([
 	{
@@ -17,12 +21,28 @@ const router = createBrowserRouter([
 				element: <Profile />
 			}
 		]
+	},
+	{
+		path: '/login',
+		element: <Login />
+	},
+	{
+		path: '/create-account',
+		element: <CreateAccount />
 	}
 ]);
+
+const GlobalStyles = createGlobalStyle`
+	${reset}
+	body {
+		color:black	
+	}
+`;
 
 function App() {
 	return (
 		<>
+			<GlobalStyles />
 			<RouterProvider router={router} />
 		</>
 	);
